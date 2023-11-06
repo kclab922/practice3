@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .models import Post
+from .models import Post, Comment
 from .forms import PostForm, CommentForm
 
 # Create your views here.
@@ -52,3 +52,9 @@ def comment_create(request, post_id):
         comment.post_id = post_id
         comment.save()
         return redirect('posts:detail', id=post_id)
+
+
+def comment_delete(request, post_id, id):
+    comment = Comment.objects.get(id=id)
+    comment.delete()
+    return redirect('posts:detail', id=post_id)

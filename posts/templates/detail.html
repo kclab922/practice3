@@ -14,9 +14,11 @@
     </form>
 
     <hr>
-    
+
     {% for comment in post.comment_set.all %}
-        <p>{{ comment.content }}</p>
+        <p>{{ comment.content }}
+        <a href="{% url 'posts:comment_delete' post_id=post.id id=comment.id %}">delete</a>
+        </p>
     {% endfor %}
 
 {% endblock %}
