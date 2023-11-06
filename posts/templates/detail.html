@@ -4,5 +4,19 @@
 
     <h1>{{ post.title }}</h1>
     <p>{{ post.content }}</p>
+    
+    <hr>
+
+    <form action="{% url 'posts:comment_create' post_id=post.id %}" method="POST">
+        {% csrf_token %}
+        {{ form }}
+        <input type="submit">
+    </form>
+
+    <hr>
+    
+    {% for comment in post.comment_set.all %}
+        <p>{{ comment.content }}</p>
+    {% endfor %}
 
 {% endblock %}
