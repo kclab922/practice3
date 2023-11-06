@@ -6,6 +6,9 @@
     <title>Document</title>
 </head>
 <body>
+    <h1>Practice</h1>
+    <a href="{% url 'posts:index' %}">home</a>
+    <a href="{% url 'posts:create' %}">create</a>
     {% block body %}
     {% endblock %}
 </body>
