@@ -11,3 +11,13 @@ def index(request):
     }
 
     return render(request, 'index.html', context)
+
+
+def detail(request, id):
+    post = Post.objects.get(id=id)
+
+    context = {
+        'post': post,
+    }
+
+    return render(request, 'detail.html', context)
